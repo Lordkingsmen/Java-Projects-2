@@ -3,12 +3,14 @@ public class Player
     private String playerName;
     private String email;
     private String phoneNumber;
+    private int age;
     
-    public Player(String initName, String initEmail, String initPhone)
+    public Player(String initName, String initEmail, String initPhone, int initAge)
     {
         playerName = initName;
         email = initEmail;
         phoneNumber = initPhone;
+        age = initAge;
     }
 
     public void print()
@@ -16,13 +18,19 @@ public class Player
         System.out.println("Name: " + playerName);
         System.out.println("Email: " + email);
         System.out.println("Phone Number: " + phoneNumber);
+        System.out.println("account age: " + age);
     }
-
-    public static void main(String[] args)
+    
+    public void setter(String newName, String newEmail, String newPhone, int newAge)
     {
-    	Player p1 = new Player("ratta", "1234@gmail.com", "123-456-7890");
-        p1.print();
-        Player p2 = new Player("tatta", "4321@gmail.com", "404 899-9955");
-        p2.print();
+    	playerName = newName;
+    	email = newEmail;
+    	phoneNumber = newPhone;
+    	age = newAge;
+    }
+    
+    public void ageUp()
+    {
+    	age++;
     }
 }
