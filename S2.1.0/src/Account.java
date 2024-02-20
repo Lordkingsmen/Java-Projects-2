@@ -30,8 +30,44 @@ public class Account
     public void roll(boolean j[])
     {
     	Random rand = new Random();
+    	String[] v = {"","","","",""};
     	for(int i=0;i<dice.length;i++)
-    		dice[i]=j[i]?rand.nextInt(6)+1:dice[i];
-    	System.out.println(Arrays.toString(dice));
+    		dice[i]=!j[i]?rand.nextInt(6)+1:dice[i];
+    	for(int i=0;i<dice.length;i++)
+			switch(dice[i])
+			{
+				case 1: v[0]=v[0] + " _______ ";
+						v[1]=v[1] + "|       |";
+						v[2]=v[2] + "|   0   |";
+						v[3]=v[3] + "|       |";
+						v[4]=v[4] + " ‾‾‾"+(i+1)+"‾‾‾ "; break;
+				case 2: v[0]=v[0] + " _______ ";
+						v[1]=v[1] + "|     0 |";
+						v[2]=v[2] + "|       |";
+						v[3]=v[3] + "| 0     |";
+						v[4]=v[4] + " ‾‾‾"+(i+1)+"‾‾‾ "; break;
+				case 3: v[0]=v[0] + " _______ ";
+						v[1]=v[1] + "|     0 |";
+						v[2]=v[2] + "|   0   |";
+						v[3]=v[3] + "| 0     |";
+						v[4]=v[4] + " ‾‾‾"+(i+1)+"‾‾‾ "; break;
+				case 4: v[0]=v[0] + " _______ ";
+						v[1]=v[1] + "| 0   0 |";
+						v[2]=v[2] + "|       |";
+						v[3]=v[3] + "| 0   0 |";
+						v[4]=v[4] + " ‾‾‾"+(i+1)+"‾‾‾ "; break;
+				case 5: v[0]=v[0] + " _______ ";
+						v[1]=v[1] + "| 0   0 |";
+						v[2]=v[2] + "|   0   |";
+						v[3]=v[3] + "| 0   0 |";
+						v[4]=v[4] + " ‾‾‾"+(i+1)+"‾‾‾ "; break;
+				case 6: v[0]=v[0] + " _______ ";
+						v[1]=v[1] + "| 0   0 |";
+						v[2]=v[2] + "| 0   0 |";
+						v[3]=v[3] + "| 0   0 |";
+						v[4]=v[4] + " ‾‾‾"+(i+1)+"‾‾‾ "; break;
+			}
+    	for(int i=0;i<v.length;i++)
+    		System.out.println(v[i]);
     }
 }
