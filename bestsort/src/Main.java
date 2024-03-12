@@ -7,25 +7,29 @@ public class Main
   public static void main(String[] args)
   {
 	  Random rand=new Random();
-	  int n=100000,saver=0;
+	  int n=100000,saver=0,Ssvr;
 	  long changes=0;
+	  boolean[] newH=new boolean[n];
 	  boolean saved=false;
-	  int[] dataset=new int[n];
+	  int[] dset=new int[n];
 	  for(int i=0;i<n;i++)
-		  dataset[i]=rand.nextInt(n*2)+1;
+		  dset[i]=rand.nextInt(n*2)+1;
 	  long start=System.nanoTime();
 	  for(int i=0;i<n-1;)
 	  {
-		  if(dataset[i]>dataset[i+1])
+		  if(!newH[i])
+		  {
+			  Ssvr=dset[i];
+			  newH[i]=true;
+		  }
+		  if(dset[i]>dset[i+1])
 		  {
 			  if(!saved)
 			  {
 				  saver=i;
 				  saved=true;
 			  }
-			  int temp=dataset[i];
-			  dataset[i]=dataset[i+1];
-			  dataset[i+1]=temp;
+			  dset[i] = (dset[i] + dset[i+1]) - (dset[i+1] = dset[i]);
 			  if(i==0) i=0;
 			  else i--;
 			  changes++;
@@ -42,7 +46,7 @@ public class Main
 	  }
 	  long end=System.nanoTime();
 	  long timeInMillis=TimeUnit.MILLISECONDS.convert(end-start,TimeUnit.NANOSECONDS);
-	  System.out.println(Arrays.toString(dataset));
+	  System.out.println(Arrays.toString(dset));
 	  System.out.println("Time spend in ms: "+timeInMillis);
 	  System.out.println(changes);
   }
