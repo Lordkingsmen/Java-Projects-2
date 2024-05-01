@@ -11,7 +11,7 @@ public class Sort
 	public static void swapSort(int n) throws IOException
 	{
 		long start=System.nanoTime();
-		swapSorter(0,n);
+		swapSorter(n);
 		long end=System.nanoTime();
 		long timeInMillis=TimeUnit.MILLISECONDS.convert(end-start,TimeUnit.NANOSECONDS);
 		System.out.println("Time spend in ms: "+timeInMillis+" "+Arrays.toString(array));
@@ -21,7 +21,7 @@ public class Sort
 	{
 		long start=System.nanoTime();
 		multiSorter(0,n);
-		swapSorter(0,n);
+		swapSorter(n);
 		long end=System.nanoTime();
 		long timeInMillis=TimeUnit.MILLISECONDS.convert(end-start,TimeUnit.NANOSECONDS);
 		System.out.println("Time spend in ms: "+timeInMillis+" "+Arrays.toString(array));
@@ -31,7 +31,7 @@ public class Sort
 	{
 		int mid=high/2;
 		Thread thread1 = new Thread(() ->
-        {
+    {
 			try
 			{
 				arrayT1=Arrays.copyOfRange(array,low+1,mid);
@@ -44,7 +44,7 @@ public class Sort
 			}
 		});
 		Thread thread2 = new Thread(() ->
-        {
+    {
 			try
 			{
 				arrayT2=Arrays.copyOfRange(array,mid+1,high);
@@ -67,34 +67,36 @@ public class Sort
 		{
 			e.printStackTrace();
 		}
-    }
+  }
 	
-	public static int[] swapSorter(int low,int high) throws IOException
+	public static int[] swapSorter(int high) throws IOException
 	{
 		int saver=0;
 		boolean saved=false;
-		for(int i=0;i<high-10;)
-		  {
-			  if(array[i]>array[i+1])
-			  {
-				  if(!saved)
-				  {
-					  saver=i;
-					  saved=true;
-				  }
-				  array[i]=(array[i]+array[i+1])-(array[i+1]=array[i]);
-				  i=(i==0)?(0):(i-1);
-			  }
-			  else
-			  {
-				  if(saved)
-				  {
-					  i=saver;
-					  saved=false;
-				  }
-				  i++;
-			  }
-		  }
+		for(int i=0;i<high-1;)
+		{
+			
+			
+			if(array[i]>array[i+1])
+			{
+				if(!saved)
+				{
+					saver=i;
+					saved=true;
+				}
+				array[i]=(array[i]+array[i+1])-(array[i+1]=array[i]);
+				i=(i==0)?(0):(i-1);
+			}
+			else
+			{
+				if(saved)
+				{
+					i=saver;
+					saved=false;
+				}
+				i++;
+			}
+		}
 		return array;
 	}
 
@@ -102,28 +104,28 @@ public class Sort
 	{
 		int saver=0;
 		boolean saved=false;
-		for(int i=0;i<high-10;)
-		  {
-			  if(arr[i]>arr[i+1])
-			  {
-				  if(!saved)
-				  {
-					  saver=i;
-					  saved=true;
-				  }
-				  arr[i]=(arr[i]+arr[i+1])-(arr[i+1]=arr[i]);
-				  i=(i==0)?(0):(i-1);
-			  }
-			  else
-			  {
-				  if(saved)
-				  {
-					  i=saver;
-					  saved=false;
-				  }
-				  i++;
-			  }
-		  }
+		for(int i=0;i<high-1;)
+		{
+			if(arr[i]>arr[i+1])
+			{
+				if(!saved)
+				{
+					saver=i;
+					saved=true;
+				}
+				arr[i]=(arr[i]+arr[i+1])-(arr[i+1]=arr[i]);
+				i=(i==0)?(0):(i-1);
+			}
+			else
+			{
+				if(saved)
+				{
+					i=saver;
+					saved=false;
+				}
+				i++;
+			}
+		}
 		return arr;
 	}
 	
