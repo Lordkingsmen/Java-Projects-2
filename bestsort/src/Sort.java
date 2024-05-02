@@ -75,8 +75,7 @@ public class Sort
 		boolean saved=false;
 		for(int i=0;i<high-1;)
 		{
-			
-			
+			Arr.splice(array, i, saver);
 			if(array[i]>array[i+1])
 			{
 				if(!saved)

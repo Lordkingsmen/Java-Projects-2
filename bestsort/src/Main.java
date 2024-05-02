@@ -7,10 +7,10 @@ import java.io.IOException;
  */
 public class Main
 {
-  public static void main(String[] args) throws IOException
-  {
-	  Sort.fileType("CSV","src\\Data.csv");
-	  Sort.multiSort(200000);
-	  //Sort.swapSort(200000);
-  }
+	public static void main(String[] args) throws IOException
+	{
+		Sort.fileType("CSV","src\\Data.csv");
+		//Sort.multiSort(200000);
+		//Sort.swapSort(200000);
+	}
 }
