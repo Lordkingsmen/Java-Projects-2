@@ -11,7 +11,7 @@ public class Sort
 	public static void swapSort(int n) throws IOException
 	{
 		long start=System.nanoTime();
-		swapSorter(n);
+		swapSorter(n, array);
 		long end=System.nanoTime();
 		long timeInMillis=TimeUnit.MILLISECONDS.convert(end-start,TimeUnit.NANOSECONDS);
 		System.out.println("Time spend in ms: "+timeInMillis+" "+Arrays.toString(array));
@@ -21,7 +21,7 @@ public class Sort
 	{
 		long start=System.nanoTime();
 		multiSorter(0,n);
-		swapSorter(n);
+		swapSorter(n, array);
 		long end=System.nanoTime();
 		long timeInMillis=TimeUnit.MILLISECONDS.convert(end-start,TimeUnit.NANOSECONDS);
 		System.out.println("Time spend in ms: "+timeInMillis+" "+Arrays.toString(array));
@@ -35,7 +35,7 @@ public class Sort
 			try
 			{
 				arrayT1=Arrays.copyOfRange(array,low+1,mid);
-				arrayT1=multSort(arrayT1.length,arrayT1);
+				arrayT1=swapSorter(arrayT1.length,arrayT1);
 				System.arraycopy(arrayT1,0,array,0,arrayT1.length);
 			}
 			catch (IOException e)
@@ -48,7 +48,7 @@ public class Sort
 			try
 			{
 				arrayT2=Arrays.copyOfRange(array,mid+1,high);
-				arrayT2=multSort(arrayT2.length,arrayT2);
+				arrayT2=swapSorter(arrayT2.length,arrayT2);
 				System.arraycopy(arrayT2,0,array,mid,arrayT2.length);
 			}
 			catch (IOException e)
@@ -69,43 +69,24 @@ public class Sort
 		}
   }
 	
-	public static int[] swapSorter(int high) throws IOException
+	public static int[] swapSorter(int high, int[] arr) throws IOException
 	{
 		int saver=0;
 		boolean saved=false;
-		for(int i=0;i<high-1;)
-		{
-			Arr.splice(array, i, saver);
-			if(array[i]>array[i+1])
+		for(int i=0,k=0;i<high-1;)
+		{//Arr.splice(arr, i, saver);
+			if(i>10)
 			{
-				if(!saved)
+				for(int j=0;k==0;j++)
 				{
-					saver=i;
-					saved=true;
+					if(arr[i]<arr[j*10])
+					{
+						Arr.splice(arr,i,(j+1)*10);
+						i=(j+1)*10;k=1;
+					}
 				}
-				array[i]=(array[i]+array[i+1])-(array[i+1]=array[i]);
-				i=(i==0)?(0):(i-1);
 			}
-			else
-			{
-				if(saved)
-				{
-					i=saver;
-					saved=false;
-				}
-				i++;
-			}
-		}
-		return array;
-	}
-
-	public static int[] multSort(int high,int[] arr) throws IOException
-	{
-		int saver=0;
-		boolean saved=false;
-		for(int i=0;i<high-1;)
-		{
-			if(arr[i]>arr[i+1])
+			else if(arr[i]>arr[i+1])
 			{
 				if(!saved)
 				{
@@ -123,6 +104,7 @@ public class Sort
 					saved=false;
 				}
 				i++;
+				k=0;
 			}
 		}
 		return arr;

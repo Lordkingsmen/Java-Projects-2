@@ -10,7 +10,7 @@ public class Main
 	public static void main(String[] args) throws IOException
 	{
 		Sort.fileType("CSV","src\\Data.csv");
-		//Sort.multiSort(200000);
-		//Sort.swapSort(200000);
+		Sort.multiSort(100000);
+		//Sort.swapSort(100000);
 	}
 }
