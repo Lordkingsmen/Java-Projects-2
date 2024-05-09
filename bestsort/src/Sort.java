@@ -72,29 +72,34 @@ public class Sort
 	public static int[] swapSorter(int high, int[] arr) throws IOException
 	{
 		int saver=0;
-		boolean saved=false;
-		for(int i=0,k=0;i<high-1;)
+		boolean saved=false,breaker=false,bool=false;
+		for(int i=0;i<high-1;)
 		{//Arr.splice(arr, i, saver);
-			if(i>10)
+			if(i>10&&!bool)
 			{
-				for(int j=0;k==0;j++)
+				for(int j=0;!breaker;j++)
 				{
-					if(arr[i]<arr[j*10])
+					System.out.println(j+" "+i);
+					if(arr[i]<arr[9+(j*10)])
 					{
-						Arr.splice(arr,i,(j+1)*10);
-						i=(j+1)*10;k=1;
+						arr=Arr.splice(arr,i,9+(j*10));
+						i=(9+(j*10));breaker=true;break;
 					}
 				}
+				bool=true;
+				continue;
 			}
 			else if(arr[i]>arr[i+1])
 			{
-				if(!saved)
+				if(!saved&&saver>i)
 				{
 					saver=i;
 					saved=true;
 				}
+				else saved=true;
 				arr[i]=(arr[i]+arr[i+1])-(arr[i+1]=arr[i]);
 				i=(i==0)?(0):(i-1);
+				continue;
 			}
 			else
 			{
@@ -104,7 +109,9 @@ public class Sort
 					saved=false;
 				}
 				i++;
-				k=0;
+				breaker=false;
+				bool=false;
+				continue;
 			}
 		}
 		return arr;
