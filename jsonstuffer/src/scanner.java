@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -29,9 +30,15 @@ public class scanner
 	{
 		String jsonString=new String(fToS(file));
 		JSONObject obj=new JSONObject(jsonString);
-		System.out.println(obj.names());
-		int temp=obj.getJSONObject("state").getJSONObject("cities").getJSONObject("vancouver").getInt("currentTemp");
-		System.out.println(temp);
+		System.out.println(obj.keys());
+		List<Object> something=(obj.getJSONObject("cities").names()).toList();
+		List<Object> eo=(obj.getJSONObject("cities").getJSONObject("vancouver").names()).toList();
+		System.out.println(something.get(0));
+		System.out.println(eo.get(1));
+		int temp=obj.getJSONObject("cities").getJSONObject("vancouver").getInt("currentTemp");
+		
+		String city=obj.getJSONObject("cities").getJSONObject("vancouver").toString();
+		System.out.println(temp+"\n"+city);
 
 	}
 	
