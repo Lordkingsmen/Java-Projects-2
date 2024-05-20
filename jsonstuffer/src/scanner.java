@@ -31,15 +31,22 @@ public class scanner
 		String jsonString=new String(fToS(file));
 		JSONObject obj=new JSONObject(jsonString);
 		System.out.println(obj.keys());
-		List<Object> something=(obj.getJSONObject("cities").names()).toList();
-		List<Object> eo=(obj.getJSONObject("cities").getJSONObject("vancouver").names()).toList();
-		System.out.println(something.get(0));
-		System.out.println(eo.get(1));
+		List<Object> cityList=(obj.getJSONObject("cities").names()).toList();
+		List<Object> city1=(obj.getJSONObject("cities").getJSONObject(cityList.get(0).toString()).names()).toList();
+		List<Object> city2=(obj.getJSONObject("cities").getJSONObject(cityList.get(1).toString()).names()).toList();
+		System.out.println(cityList.get(0));
+		System.out.println(city1.get(1).toString());
 		int temp=obj.getJSONObject("cities").getJSONObject("vancouver").getInt("currentTemp");
 		
-		String city=obj.getJSONObject("cities").getJSONObject("vancouver").toString();
-		System.out.println(temp+"\n"+city);
-
+		for(int i=0;i<4;i++)
+		{
+			System.out.print(city1.get(i)+" ");
+		}
+		System.out.println();
+		for(int i=0;i<4;i++)
+		{
+			System.out.print(city2.get(i)+" ");
+		}
 	}
 	
 	public static String fToS(String file) throws IOException
