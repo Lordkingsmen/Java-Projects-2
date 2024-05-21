@@ -4,7 +4,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class scanner
@@ -25,18 +24,18 @@ public class scanner
 		fileScan.close();
 		return Data;
 	}
-	
+
 	public static void readJSON(String file) throws IOException
 	{
 		String jsonString=new String(fToS(file));
 		JSONObject obj=new JSONObject(jsonString);
 		System.out.println(obj.keys());
-		List<Object> cityList=(obj.getJSONObject("cities").names()).toList();
-		List<Object> city1=(obj.getJSONObject("cities").getJSONObject(cityList.get(0).toString()).names()).toList();
-		List<Object> city2=(obj.getJSONObject("cities").getJSONObject(cityList.get(1).toString()).names()).toList();
+		List<Object> cityList=(obj.names()).toList();
+		List<Object> city1=(obj.getJSONObject(cityList.get(0).toString()).names()).toList();
+		List<Object> city2=(obj.getJSONObject(cityList.get(1).toString()).names()).toList();
 		System.out.println(cityList.get(0));
 		System.out.println(city1.get(1).toString());
-		int temp=obj.getJSONObject("cities").getJSONObject("vancouver").getInt("currentTemp");
+		int temp=obj.getJSONObject("vancouver").getInt("currentTemp");
 		
 		for(int i=0;i<4;i++)
 		{
@@ -47,8 +46,10 @@ public class scanner
 		{
 			System.out.print(city2.get(i)+" ");
 		}
+		City TangiCounty = new City(77,"partially cloudy",5,"Northeast");
+		TangiCounty.readCurrent();
 	}
-	
+
 	public static String fToS(String file) throws IOException
 	{
 		Scanner fileScan=new Scanner(new File(file));
@@ -59,11 +60,11 @@ public class scanner
 		fileScan.close();
 		return line;
 	}
-	
+
 	public static int lineC(String fileN) throws IOException
 	{
-	      	int lines=0;
-	      	BufferedReader reader=new BufferedReader(new FileReader(fileN));
+		  	int lines=0;
+		  	BufferedReader reader=new BufferedReader(new FileReader(fileN));
 			while (reader.readLine() != null)
 				lines++;
 			reader.close();

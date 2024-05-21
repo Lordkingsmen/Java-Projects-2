@@ -1,19 +1,16 @@
 {
-	"cities":
+	"vancouver":
 	{
-		"vancouver":
-		{
-			"currentTemp":71,
-			"weather":"sunny",
-			"windSpeed":4,
-			"windDirection":"Northwest"
-		},
-		"beaverton":
-		{
-			"currentTemp":64,
-			"weather":"cloudy",
-			"windSpeed":7,
-			"windDirection":"North"
-		}
+		"currentTemp":71,
+		"weather":"sunny",
+		"windSpeed":4,
+		"windDirection":"Northwest"
+	},
+	"beaverton":
+	{
+		"currentTemp":64,
+		"weather":"cloudy",
+		"windSpeed":7,
+		"windDirection":"North"
 	}
 }
