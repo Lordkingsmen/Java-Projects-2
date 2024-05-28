@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 import org.json.JSONObject;
-
+//use the name lists to create the objects. use for loop and a array to store variabes then make the equal the city bj.
 public class scanner
 {
 	public static int[] readCSV(String file) throws IOException

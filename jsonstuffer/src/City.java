@@ -35,6 +35,6 @@ public class City
 				"Current Temp: "+this.currentTemp+System.lineSeparator()+
 				"Current Weather: "+this.weather+System.lineSeparator()+
 				"Current Wind Speed: "+this.windSpeed+System.lineSeparator()+
-				"Current Wind Direction; "+this.windDirection);
+				"Current Wind Direction: "+this.windDirection);
 	}
 }
