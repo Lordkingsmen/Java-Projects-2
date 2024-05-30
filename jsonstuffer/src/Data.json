@@ -1,4 +1,11 @@
 {
+	"placeholderCity":
+	{
+		"currentTemp":0,
+		"weather":"null",
+		"windSpeed":0,
+		"windDirection":"null"
+	},
 	"vancouver":
 	{
 		"currentTemp":71,

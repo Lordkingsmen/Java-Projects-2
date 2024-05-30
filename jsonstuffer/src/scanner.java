@@ -29,25 +29,30 @@ public class scanner
 	{
 		String jsonString=new String(fToS(file));
 		JSONObject obj=new JSONObject(jsonString);
-		System.out.println(obj.keys());
 		List<Object> cityList=(obj.names()).toList();
 		List<Object> city1=(obj.getJSONObject(cityList.get(0).toString()).names()).toList();
-		List<Object> city2=(obj.getJSONObject(cityList.get(1).toString()).names()).toList();
-		System.out.println(cityList.get(0));
-		System.out.println(city1.get(1).toString());
-		int temp=obj.getJSONObject("vancouver").getInt("currentTemp");
 		
-		for(int i=0;i<4;i++)
-		{
-			System.out.print(city1.get(i)+" ");
-		}
-		System.out.println();
-		for(int i=0;i<4;i++)
-		{
-			System.out.print(city2.get(i)+" ");
-		}
-		City TangiCounty = new City(77,"partially cloudy",5,"Northeast");
-		TangiCounty.readCurrent();
+		City cityWeather1 = new City(
+				cityList.get(0).toString(),
+				obj.getJSONObject(cityList.get(0).toString()).getInt(city1.get(1).toString()),
+				obj.getJSONObject(cityList.get(0).toString()).getString(city1.get(0).toString()),
+				obj.getJSONObject(cityList.get(0).toString()).getInt(city1.get(3).toString()),
+				obj.getJSONObject(cityList.get(0).toString()).getString(city1.get(2).toString()));
+		cityWeather1.readCurrent();
+		City cityWeather2 = new City(
+				cityList.get(1).toString(),
+				obj.getJSONObject(cityList.get(1).toString()).getInt(city1.get(1).toString()),
+				obj.getJSONObject(cityList.get(1).toString()).getString(city1.get(0).toString()),
+				obj.getJSONObject(cityList.get(1).toString()).getInt(city1.get(3).toString()),
+				obj.getJSONObject(cityList.get(1).toString()).getString(city1.get(2).toString()));
+		cityWeather2.readCurrent();
+		City cityWeather3 = new City(
+				cityList.get(2).toString(),
+				obj.getJSONObject(cityList.get(2).toString()).getInt(city1.get(1).toString()),
+				obj.getJSONObject(cityList.get(2).toString()).getString(city1.get(0).toString()),
+				obj.getJSONObject(cityList.get(2).toString()).getInt(city1.get(3).toString()),
+				obj.getJSONObject(cityList.get(2).toString()).getString(city1.get(2).toString()));
+		cityWeather3.readCurrent();
 	}
 
 	public static String fToS(String file) throws IOException
